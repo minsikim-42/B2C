@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 21:00:32 by minsikim          #+#    #+#             */
-/*   Updated: 2021/04/02 21:09:23 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/04/07 22:04:11 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	print_num(long long num, t_type flag, int *count)
 {
 	char	cnum;
 
-	if ((num == 0 && flag.dot == 0) || (num == 0 && flag.dot && flag.prec == -1))
+	if ((num == 0 && flag.dot == 0) ||
+		(num == 0 && flag.dot && flag.prec == -1))
 	{
 		write(1, "0", 1);
 		(*count)++;
@@ -68,9 +69,10 @@ void	print_num_x(long long num, t_type flag, int *count)
 
 void	print_num16(unsigned int num, t_type flag, char c, int *count)
 {
-	char    cnum;
+	char	cnum;
 
-	if ((num == 0 && flag.dot == 0) || (num == 0 && flag.dot && flag.prec == -1))
+	if ((num == 0 && flag.dot == 0) ||
+		(num == 0 && flag.dot && flag.prec == -1))
 	{
 		write(1, "0", 1);
 		(*count)++;
@@ -78,7 +80,7 @@ void	print_num16(unsigned int num, t_type flag, char c, int *count)
 	}
 	else if (num == 0 && flag.dot == 1)
 		return ;
-	if (c != 'x' && c != 'X') // if *str(%x, %X, %a(per)) == 'a'(a = 97, +23, x = 120)
+	if (c != 'x' && c != 'X')
 		c = c + 23;
 	if (num == 0 && flag.dot == 0)
 	{
@@ -89,7 +91,7 @@ void	print_num16(unsigned int num, t_type flag, char c, int *count)
 	else if (num == 0 && flag.dot == 1)
 		return ;
 	if (num % 16 < 10)
-		cnum = (num % 16) + '0'; // 7 char 7 char '7' 48>0 49>1
+		cnum = (num % 16) + '0';
 	else
 		cnum = (num % 16) - 10 - 23 + c;
 	if (num / 16 == 0)
@@ -107,7 +109,8 @@ void	print_num16_p(unsigned long long num, t_type flag, char c, int *count)
 {
 	char	cnum;
 
-	if ((num == 0 && flag.dot == 0) || (num == 0 && flag.dot && flag.prec == -1))
+	if ((num == 0 && flag.dot == 0) ||
+		(num == 0 && flag.dot && flag.prec == -1))
 	{
 		write(1, "0", 1);
 		(*count)++;
@@ -115,7 +118,7 @@ void	print_num16_p(unsigned long long num, t_type flag, char c, int *count)
 	}
 	else if (num == 0 && flag.dot == 1)
 		return ;
-	if (c != 'x' && c != 'X') // if *str(%x, %X, %a(per)) == 'a'(a = 97, +23, x = 120)
+	if (c != 'x' && c != 'X')
 		c = c + 23;
 	if (num == 0 && flag.dot == 0)
 	{
@@ -126,7 +129,7 @@ void	print_num16_p(unsigned long long num, t_type flag, char c, int *count)
 	else if (num == 0 && flag.dot == 1)
 		return ;
 	if (num % 16 < 10)
-		cnum = (num % 16) + '0'; // 7 char '7' 48>0 49>1
+		cnum = (num % 16) + '0';
 	else
 		cnum = (num % 16) - 10 - 23 + c;
 	if (num / 16 == 0)
@@ -142,7 +145,8 @@ void	print_num16_p(unsigned long long num, t_type flag, char c, int *count)
 
 int		count_num16(unsigned int num, t_type flag)
 {
-	if ((num == 0 && flag.dot == 0) || (num == 0 && flag.dot && flag.prec == -1))
+	if ((num == 0 && flag.dot == 0) ||
+		(num == 0 && flag.dot && flag.prec == -1))
 		return (1);
 	else if (num == 0 && flag.dot == 1)
 		return (0);
@@ -159,9 +163,10 @@ int		count_num16(unsigned int num, t_type flag)
 
 int		count_num(long long num, t_type flag)
 {
-	int     i;
+	int		i;
 
-	if ((num == 0 && flag.dot == 0) || (num == 0 && flag.dot && flag.prec == -1))
+	if ((num == 0 && flag.dot == 0) ||
+		(num == 0 && flag.dot && flag.prec == -1))
 		return (1);
 	else if (num == 0 && flag.dot == 1)
 		return (0);
@@ -193,7 +198,7 @@ int		count_num_x(long long num, int j)
 
 int		ft_strlen(char *str)
 {
-	int     i;
+	int		i;
 
 	if (!str)
 		return (6);
@@ -203,4 +208,89 @@ int		ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	typeset(t_type *flag)
+{
+	flag->reverse = 0;
+	flag->zero = 0;
+	flag->prec = -1;
+	flag->width = 0;
+	flag->dot = 0;
+	flag->mi = 0;
+}
+
+t_type	flagset1(t_type flag, char **str, int *count)
+{
+	while (**str == ' ')
+	{
+		(*str)++;
+		write(1, " ", 1);
+		(*count)++;
+	}
+	while (**str == '0' || **str == '-')
+	{
+		if (**str == '0')
+		{
+			flag.zero = 1;
+			(*str)++;
+		}
+		else
+		{
+			flag.reverse = 1;
+			(*str)++;
+		}
+	}
+	return (flag);
+}
+
+t_type	flagset2(t_type flag, va_list ap, char **str)
+{
+	if (flag.zero && flag.reverse)
+		flag.zero = 0;
+    if (**str == '*')
+    {
+		flag.width = va_arg(ap, int);
+		(*str)++;
+		if (flag.width < 0)
+		{
+			flag.width = flag.width * (-1);
+			flag.reverse = 1;
+			flag.zero = 0;
+		}
+	}
+	else
+	{
+		while (**str >= '0' && **str <= '9')
+		{
+			flag.width = flag.width * 10 + (int)**str - 48;
+			(*str)++;
+		}
+	}
+	return (flag);
+}
+
+t_type	flagset3(t_type flag, va_list ap, char **str)
+{
+	while (**str == '.')
+    {
+        flag.dot = 1;
+        (*str)++;
+        flag.prec = 0; // . >> prec = 0 >> there is prec >> if 0 > no output
+    }
+    if (**str == '*')
+    {
+        flag.prec = va_arg(ap, int);
+        (*str)++;
+        if (flag.prec < 0)
+            flag.prec = -1;
+    }
+    while (**str >= '0' && **str <= '9')
+    {
+        if (flag.prec < 0)
+            flag.prec = 0;
+        flag.prec = flag.prec * 10 + (int)**str - '0';
+        (*str)++;
+    }
+	return (flag);
 }

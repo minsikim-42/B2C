@@ -27,6 +27,11 @@ typedef struct	s_type
 	int		mi;
 }				t_type;
 
+void	typeset(t_type *flag);
+t_type	flagset1(t_type flag, char **str, int *count);
+t_type	flagset2(t_type flag, va_list ap, char **str);
+t_type	flagset3(t_type flag, va_list ap, char **str);
+
 int		ft_printf(char *str, ...);
 int		ft_strlen(char *str);
 void	handling_d(va_list ap, int *count, char *str);

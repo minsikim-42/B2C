@@ -2,84 +2,72 @@
 
 t_type type_check_d(va_list ap, char **str, int *count) // % 0 - * 9(w) . 5(p)
 {
-    t_type flag;
+    t_type  flag;
 
-    flag.reverse = 0;
-	flag.zero = 0;
-	flag.prec = -1;
-	flag.width = 0;
-	flag.dot = 0;
-    flag.mi = 0;
-    while (**str == ' ')
-    {
-        (*str)++;
-        write(1, " ", 1);
-        (*count)++;
-    }
-    while (**str == '0' || **str == '-')
-    {
-        if (**str == '0')
-        {
-            flag.zero = 1;
-            (*str)++;
-        }
-        else
-        {
-            flag.reverse = 1;
-            (*str)++;
-        }
-    }
-    if (flag.zero && flag.reverse)
-        flag.zero = 0;
-    // while (**str == '-')
+    typeset(&flag);
+    flag = flagset1(flag, str, count);
+    // while (**str == ' ')
     // {
-    //     flag.reverse = 1;
+    //     (*str)++;
+    //     write(1, " ", 1);
+    //     (*count)++;
+    // }
+    // while (**str == '0' || **str == '-')
+    // {
+    //     if (**str == '0')
+    //     {
+    //         flag.zero = 1;
+    //         (*str)++;
+    //     }
+    //     else
+    //     {
+    //         flag.reverse = 1;
+    //         (*str)++;
+    //     }
+    // }
+    flag = flagset2(flag, ap, str);
+    // if (flag.zero && flag.reverse)
+    //     flag.zero = 0;
+    // if (**str == '*')
+    // {
+    //     flag.width = va_arg(ap, int);
+    //     (*str)++;
+    //     if (flag.width < 0)
+    //     {
+    //         flag.width = flag.width * (-1);
+    //         flag.reverse = 1;
+    //         flag.zero = 0;
+    //     }
+    // }
+    // else
+    // {
+    //     while (**str >= '0' && **str <= '9')
+	//     {
+	// 	    flag.width = flag.width * 10 + (int)**str - 48;
+    //         (*str)++;
+	//     }
+    // }
+    flag = flagset3(flag, ap, str);
+    // while (**str == '.')
+    // {
+    //     flag.dot = 1;
+    //     (*str)++;
+    //     flag.prec = 0; // . >> prec = 0 >> there is prec >> if 0 > no output
+    // }
+    // if (**str == '*')
+    // {
+    //     flag.prec = va_arg(ap, int);
+    //     (*str)++;
+    //     if (flag.prec < 0)
+    //         flag.prec = -1;
+    // }
+    // while (**str >= '0' && **str <= '9')
+    // {
+    //     if (flag.prec < 0)
+    //         flag.prec = 0;
+    //     flag.prec = flag.prec * 10 + (int)**str - '0';
     //     (*str)++;
     // }
-    // while (**str == '0')
-    // {
-    //     flag.zero = 1;
-    //     (*str)++;
-    // }
-    if (**str == '*')
-    {
-        flag.width = va_arg(ap, int);
-        (*str)++;
-        if (flag.width < 0)
-        {
-            flag.width = flag.width * (-1);
-            flag.reverse = 1;
-            flag.zero = 0;
-        }
-    }
-    else
-    {
-        while (**str >= '0' && **str <= '9')
-	    {
-		    flag.width = flag.width * 10 + (int)**str - 48;
-            (*str)++;
-	    }
-    }
-    while (**str == '.')
-    {
-        flag.dot = 1;
-        (*str)++;
-        flag.prec = 0; // . >> prec = 0 >> there is prec >> if 0 > no output
-    }
-    if (**str == '*')
-    {
-        flag.prec = va_arg(ap, int);
-        (*str)++;
-        if (flag.prec < 0)
-            flag.prec = -1;
-    }
-    while (**str >= '0' && **str <= '9')
-    {
-        if (flag.prec < 0)
-            flag.prec = 0;
-        flag.prec = flag.prec * 10 + (int)**str - '0';
-        (*str)++;
-    }
     return (flag);
 }
 
@@ -162,15 +150,6 @@ void    precision(t_type flag, unsigned int num, int *count)
             (*count)++;
         }
     }
-    /*else
-    {
-        while (i < flag.prec)
-        {
-            write(1, " ", 1);
-            i++;
-        }
-    }
-    */
 }
 
 void    precision_X(t_type flag, int num, int *count)
@@ -180,7 +159,6 @@ void    precision_X(t_type flag, int num, int *count)
     if (flag.prec < 0)
         return ;
     i = count_num16((unsigned int)num, flag);
-    //printf("i = %d, num = %d", i, num);
     if (flag.prec > i)
     {
         while (i < flag.prec)
@@ -196,8 +174,6 @@ int     reverse(t_type flag, int j, unsigned int num, int *count)
 {
     int     i;
 
-    // if (flag.prec != -1)
-    //     i = flag.prec - count_num(num);
     if (j < 0 && flag.reverse) // reverse & first
         return (1);
     if (j == 1 && flag.reverse != 1)
@@ -205,14 +181,10 @@ int     reverse(t_type flag, int j, unsigned int num, int *count)
     if ((flag.width - flag.prec <= 0) || (flag.prec == -1 && flag.zero))
         return (1);
     (flag.prec > count_num(num, flag)) ? (i = flag.prec) : (i = count_num(num, flag));
-    // if (flag.zero == 1 && flag.prec == -1)
-    //     return (0);
     if (flag.mi == 1)
         i++;
     if (flag.width > i)
 	{
-        // if (flag.zero && !(flag.dot)) //++
-        //     return (1);
 		while (i < flag.width)
 		{
 			write(1, " ", 1);
@@ -229,11 +201,6 @@ int     reverse_X(t_type flag, int j, int num, int *count)
     int     i;
 
     i = 0;
-    // (i = flag.prec > count_num16(num, flag)) ? (i = flag.prec) : (i = count_num16(num, flag));
-    // if ((j < 0 && (flag.reverse || (flag.width < i))) || (flag.zero && !(flag.dot)))
-    //     return (1);
-    // if (j < 0 && flag.reverse) // reverse & first
-    //     return (1);
 
     if (j < 0 && flag.reverse) // reverse & first
         return (1);
@@ -265,11 +232,9 @@ int     reverse_s(t_type flag, int k, char *str, int *count)
         return (1);
     if (k == 1 && !(flag.reverse))
         return (0);
-    //printf("prec = %d, j = %d", flag.prec, j);
     (flag.prec >= 0 &&flag.prec < ft_strlen(str)) ? (i = flag.prec) : (i = ft_strlen(str));
     if (flag.width > i)
 	{
-        //printf("i = %d, str = %s", i, str);
 		while (i < flag.width)
 		{
 			write(1, " ", 1);

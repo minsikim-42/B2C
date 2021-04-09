@@ -12,13 +12,14 @@
 
 #include "libftprintf.h"
 
-int 	handling(char *str, va_list ap, int *count) // start as %++
+int		handling(char *str, va_list ap, int *count)
 {
 	int		i;
 
 	i = 0;
-	while ((str[i]) != 'd' && str[i] != 's' && str[i] != 'c' && str[i] != 'i' &&
-	str[i] != 'p' && str[i] != 'u' && str[i] != 'x' && str[i] != 'X' && str[i] != '%') // find d, sß
+	while ((str[i]) != 'd' && str[i] != 's' && str[i] != 'c'
+		&& str[i] != 'i' && str[i] != 'p' && str[i] != 'u'
+		&& str[i] != 'x' && str[i] != 'X' && str[i] != '%')
 		i++;
 	if (str[i] == 'd' || str[i] == 'i')
 		handling_d(ap, count, str);
@@ -29,9 +30,9 @@ int 	handling(char *str, va_list ap, int *count) // start as %++
 	else if (str[i] == 'p')
 		handling_p(ap, count, str);
 	else if (str[i] == 'u')
-	 	handling_u(ap, count, str);
-	 else if (str[i] == 'x' || str[i] == 'X')
-	 	handling_X(ap, count, str);
+		handling_u(ap, count, str);
+	else if (str[i] == 'x' || str[i] == 'X')
+		handling_x(ap, count, str);
 	else if (str[i] == '%')
 		handling_per(ap, count, str);
 	i++;
@@ -40,11 +41,11 @@ int 	handling(char *str, va_list ap, int *count) // start as %++
 
 int		ft_printf(char *str, ...)
 {
-	va_list		ap; //pointer
+	va_list		ap;
 	int			count;
 
 	count = 0;
-	va_start(ap, str);//pointer move(to start arg1)
+	va_start(ap, str);
 	while (*str)
 	{
 		if (*str == '%')
@@ -55,6 +56,6 @@ int		ft_printf(char *str, ...)
 		else
 			count = count + write(1, str++, 1);
 	}
-	va_end(ap);//end
+	va_end(ap);
 	return (count);
 }

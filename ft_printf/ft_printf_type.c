@@ -23,6 +23,17 @@ t_type	type_check_d(va_list ap, char **str, int *count)
 	return (flag);
 }
 
+t_type	type_check_per(va_list ap, char **str)
+{
+	t_type	flag;
+
+	typeset(&flag);
+	flag = flagset1_per(flag, str);
+	flag = flagset2(flag, ap, str);
+	flag = flagset3(flag, ap, str);
+	return (flag);
+}
+
 t_type	type_check_s(va_list ap, char **str)
 {
 	t_type	flag;

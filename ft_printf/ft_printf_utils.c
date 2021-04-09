@@ -41,4 +41,25 @@ void	typeset(t_type *flag)
 	flag->width = 0;
 	flag->dot = 0;
 	flag->mi = 0;
+	flag->sp = 0;
+}
+
+t_type	flagset1_per(t_type flag, char **str)
+{
+	while (**str == '0' || **str == '-' || **str == ' ')
+	{
+		if (**str == '0')
+		{
+			flag.zero = 1;
+			(*str)++;
+		}
+		else if (**str == ' ')
+			(*str)++;
+		else
+		{
+			flag.reverse = 1;
+			(*str)++;
+		}
+	}
+	return (flag);
 }

@@ -72,7 +72,7 @@ void	handling_per(va_list ap, int *count, char *str)
 	t_type	flag;
 	int		rev;
 
-	flag = type_check_d(ap, &str, count);
+	flag = type_check_per(ap, &str);
 	rev = reverse_per(flag, -1, count);
 	zero_per(flag, count);
 	write(1, "%", 1);

@@ -25,10 +25,12 @@ typedef struct	s_type
 	int		width;
 	int		dot;
 	int		mi;
+	int		sp;
 }				t_type;
 
 void			typeset(t_type *flag);
 t_type			flagset1(t_type flag, char **str, int *count);
+t_type			flagset1_per(t_type flag, char **str);
 t_type			flagset2(t_type flag, va_list ap, char **str);
 t_type			flagset3(t_type flag, va_list ap, char **str);
 t_type			flagset1_s(t_type flag, char **str, va_list ap);
@@ -66,7 +68,9 @@ void			zero(t_type flag, unsigned int num, int *count);
 void			zero_per(t_type flag, int *count);
 void			zero_16(t_type flag, int num, int *count);
 void			zero_s(t_type flag, char *str, int *count);
+
 t_type			type_check_d(va_list ap, char **str, int *count);
+t_type			type_check_per(va_list ap, char **str);
 t_type			type_check_s(va_list ap, char **str);
 t_type			type_check_c(va_list ap, char **str);
 

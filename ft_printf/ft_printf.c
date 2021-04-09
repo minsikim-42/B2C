@@ -19,7 +19,7 @@ int		handling(char *str, va_list ap, int *count)
 	i = 0;
 	while ((str[i]) != 'd' && str[i] != 's' && str[i] != 'c'
 		&& str[i] != 'i' && str[i] != 'p' && str[i] != 'u'
-		&& str[i] != 'x' && str[i] != 'X' && str[i] != '%')
+		&& str[i] != 'x' && str[i] != 'X' && str[i] != '%' && str[i])
 		i++;
 	if (str[i] == 'd' || str[i] == 'i')
 		handling_d(ap, count, str);
@@ -35,6 +35,8 @@ int		handling(char *str, va_list ap, int *count)
 		handling_x(ap, count, str);
 	else if (str[i] == '%')
 		handling_per(ap, count, str);
+	else
+		return (0);
 	i++;
 	return (i);
 }

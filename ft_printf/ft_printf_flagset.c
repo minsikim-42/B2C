@@ -14,18 +14,18 @@
 
 t_type	flagset1(t_type flag, char **str, int *count)
 {
-	while (**str == ' ')
-	{
-		(*str)++;
-		write(1, " ", 1);
-		(*count)++;
-	}
-	while (**str == '0' || **str == '-')
+	while (**str == '0' || **str == '-' || **str == ' ')
 	{
 		if (**str == '0')
 		{
 			flag.zero = 1;
 			(*str)++;
+		}
+		else if (**str == ' ')
+		{
+			flag.sp++;
+			(*str)++;
+			wr_count(' ', count);
 		}
 		else
 		{
@@ -59,6 +59,8 @@ t_type	flagset2(t_type flag, va_list ap, char **str)
 			(*str)++;
 		}
 	}
+	if (flag.width - flag.sp > 0 && flag.sp)
+		flag.width = flag.width - flag.sp;
 	return (flag);
 }
 

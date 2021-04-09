@@ -22,7 +22,7 @@ void	handling_d(va_list ap, int *count, char *str)
 	num = va_arg(ap, int);
 	if (num < 0)
 	{
-		num = num * (-1);
+		num = num * (-1); //
 		flag.mi = 1;
 		(*count)++;
 	}

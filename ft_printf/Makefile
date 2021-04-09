@@ -9,7 +9,8 @@ FILE = ft_printf.c \
 	ft_printf_num.c \
 	ft_printf_count_num.c \
 	ft_printf_flagset.c \
-	
+	ft_printf_zero.c \
+	ft_printf_reverse.c
 
 OBJECTS = $(FILE:%.c=%.o)
 

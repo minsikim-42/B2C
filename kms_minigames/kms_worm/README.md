@@ -1,5 +1,5 @@
 ![image](https://user-images.githubusercontent.com/74590585/116998300-f370ac00-ad18-11eb-94a2-1e299980ed09.png) 
-![image](https://user-images.githubusercontent.com/74590585/116998387-1bf8a600-ad19-11eb-8e84-0433b94d5017.png)
+![image](https://user-images.githubusercontent.com/74590585/116998440-2dda4900-ad19-11eb-924d-59d04f2b00f3.png)
 ## kms worm game!
 
 mlx폴더에 깃클론을 해주세요.

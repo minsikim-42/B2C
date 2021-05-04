@@ -3,8 +3,8 @@
 // #include <stdlib.h>
 // #include <stdio.h>
 // #include <time.h>
-#include "pixel_warm_tracing.c"
-#include "pixel_warm_game.h"
+#include "pixel_worm_tracing.c"
+#include "pixel_worm_game.h"
 
 char arr[1200][1200] = {0,};
 

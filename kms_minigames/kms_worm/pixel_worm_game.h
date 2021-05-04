@@ -1,5 +1,5 @@
-#ifndef PIXEL_WARM_GAME_H
-# define PIXEL_WARM_GAME_H
+#ifndef PIXEL_WORM_GAME_H
+# define PIXEL_WORM_GAME_H
 
 # include "mlx.h"
 # include <stdlib.h>

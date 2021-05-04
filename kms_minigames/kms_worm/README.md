@@ -1,4 +1,5 @@
-## kms worm game!
+## ![image](https://user-images.githubusercontent.com/74590585/116998300-f370ac00-ad18-11eb-94a2-1e299980ed09.png)
+kms worm game!
 
 mlx폴더에 깃클론을 해주세요.
 please install files in mlx folder.

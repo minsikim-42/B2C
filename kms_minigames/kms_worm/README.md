@@ -12,11 +12,11 @@ this game is survivor game. 2player press key(Keep your hands off the key!!) and
 listen. Dont leave key!!
 
 ### player left
-up : 'w'
-down : 's'
-left : 'a'
-right : 'd'
-confuse : ' '
+up : 'w'\n
+down : 's'\n
+left : 'a'\n
+right : 'd'\n
+confuse : ' '\n
 
 ### player right
 up : up key

@@ -21,22 +21,22 @@ int		ft_move(t_data *data)
 	if (data->left == 1 && data->player.x > 0)
 	{
 		data->player.x -= 1;
-		printf("x = %d, y= %d\n", data->player.x, data->player.y);
+		//printf("x = %d, y= %d\n", data->player.x, data->player.y);
 	}
 	if (data->right == 1 && data->player.x < data->width / 2 - data->size_x / 2)
 	{
     	data->player.x += 1;
-    	printf("x = %d, y= %d\n", data->player.x, data->player.y);
+    	//printf("x = %d, y= %d\n", data->player.x, data->player.y);
 	}
 	if (data->up == 1 && data->player.y > 0)
 	{
 		data->player.y -= 1;
-		printf("x = %d, y= %d\n", data->player.x, data->player.y);
+		//printf("x = %d, y= %d\n", data->player.x, data->player.y);
 	}
 	if (data->down == 1 && data->player.y < data->height / 2 - data->size_y / 2)
 	{
 		data->player.y += 1;
-		printf("x = %d, y= %d\n", data->player.x, data->player.y);
+		//printf("x = %d, y= %d\n", data->player.x, data->player.y);
 	}
 	if (arr[data->player.x][data->player.y] == 1 && data->score > 0)
 	{
@@ -52,22 +52,22 @@ int		ft_move_2(t_data *data)
 	if (data->left2 == 1 && data->player_2.x > 0)
 	{
 		data->player_2.x -= 1;
-		printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
+		//printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
 	}
 	if (data->right2 == 1 && data->player_2.x < data->width / 2 - data->size_x / 2)
 	{
     	data->player_2.x += 1;
-    	printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
+    	//printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
 	}
 	if (data->up2 == 1 && data->player_2.y > 0)
 	{
 		data->player_2.y -= 1;
-		printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
+		//printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
 	}
 	if (data->down2 == 1 && data->player_2.y < data->height / 2 - data->size_y / 2)
 	{
 		data->player_2.y += 1;
-		printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
+		//printf("x = %d, y= %d\n", data->player_2.x, data->player_2.y);
 	}
 	if (arr[data->player_2.x][data->player_2.y] == 1 && data->score > 0)
 	{
@@ -160,15 +160,62 @@ int		ft_draw_2(t_data *data)
 	return (0);
 }
 
+int		ft_draw_wall(t_data *data)
+{
+	int i, j, k, l;
+	int x = 200;
+	int y = 200;
+
+	if (data->pause == 0)
+	{
+		for(i = x; i < 100 + x; i++)
+		{
+			for (j = y; j < 50 + y; j++)
+			{
+				my_mlx_pixel_put(data, i + x, j + y, data->wall.color);
+				arr[i + x][j + y] = 1;
+				//my_mlx_pixel_put(data, i + data->size_x / 2 - 5 + x, j + data->size_y / 2 - 5 + y, 0x00FF0000);
+			}
+		}
+		for(i = x + 100 / 2 - 5; i < 50 / 2 + 5 + x; i++)
+		{
+			for (j = y + 100 / 2 - 5; j < 50 / 2 + 5 + y; j++)
+			{
+				my_mlx_pixel_put(data, i + x, j + y, 0x00FF0000);
+				arr[i + x][j + y] = 1;
+			}
+		}
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	}
+	else
+	{
+		for(i = x + data->size_x / 2 - 5; i < data->size_x / 2 + 5 + x; i++)
+		{
+			for (j = y + data->size_x / 2 - 5; j < data->size_y / 2 + 5 + y; j++)
+			{
+				my_mlx_pixel_put(data, i + x, j + y, data->wall.color);
+				arr[i + x][j + y] = 1;
+			}
+		}
+		clock_t start = clock();
+		while(clock() - start < 2000);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	}
+	return (0);
+}
+
 int		main_loop(t_data *data)
 {
 	if (data->start != 1)
 		return (0);
 	data->score++;
+	
 	ft_draw(data);
 	ft_move(data);
 	ft_draw_2(data);
 	ft_move_2(data);
+	if (data->score > 0)
+		ft_draw_wall(data);
 	return (1);
 }
 
@@ -178,10 +225,13 @@ void	data_set(t_data *data)
 
 	data->width = ga;
 	data->height = se;
-	data->player.x = 0;
-	data->player.y = 0;
-	data->player_2.x = ga / 2 - 50;
-	data->player_2.y = se / 2 - 50;
+	data->player_2.x = 0;
+	data->player_2.y = 0;
+	data->player.x = ga / 2 - 15;
+	data->player.y = se / 2 - 15;
+	data->wall.x = ga / 4;
+	data->wall.y = se / 2;
+
 	data->size_x = 30;
 	data->size_y = 30;
 
@@ -213,7 +263,7 @@ int		main()
 
 	data.mlx = mlx_init();
 
-	data.mlx_win = mlx_new_window(data.mlx, data.width, data.height, "pixel_put");
+	data.mlx_win = mlx_new_window(data.mlx, data.width, data.height, "kms_pixel_worm_game");
 	data.img = mlx_new_image(data.mlx, data.width, data.height); // include image instance
 	data.add = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian); // image's address malloc
 	//mlx_put_image_to_window(data.mlx, data.mlx_win, data.img, 0, 0);

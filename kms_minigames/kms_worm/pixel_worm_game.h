@@ -30,6 +30,7 @@ typedef struct  s_player {
 typedef	struct	s_data {
     t_player player;
     t_player player_2;
+	t_player wall;
 
 	void	*img;
 	char	*add;

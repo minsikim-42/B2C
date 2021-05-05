@@ -3,7 +3,7 @@
 int		tracing(int keycode, t_data *data)
 {
 	data->start = 1;
-	printf("%d\n", keycode);
+	//printf("%d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 
@@ -16,7 +16,7 @@ int		tracing(int keycode, t_data *data)
 			data->down = 1;
 		if (data->left == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		data->left = 1;
@@ -32,7 +32,7 @@ int		tracing(int keycode, t_data *data)
 			data->down = 1;
 		if (data->right == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		data->left = 0;
@@ -48,7 +48,7 @@ int		tracing(int keycode, t_data *data)
 			data->right = 1;	
 		if (data->up == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		//data->left = 0;
@@ -64,7 +64,7 @@ int		tracing(int keycode, t_data *data)
 			data->right = 1;
 		if (data->down == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		//data->left = 0;
@@ -81,7 +81,7 @@ int		tracing(int keycode, t_data *data)
 			data->down2 = 1;
 		if (data->left2 == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		data->left2 = 1;
@@ -97,7 +97,7 @@ int		tracing(int keycode, t_data *data)
 			data->down2 = 1;
 		if (data->right2 == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		data->left2 = 0;
@@ -113,7 +113,7 @@ int		tracing(int keycode, t_data *data)
 			data->right2 = 1;	
 		if (data->up2 == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		//data->left = 0;
@@ -129,7 +129,7 @@ int		tracing(int keycode, t_data *data)
 			data->right2 = 1;
 		if (data->down2 == 0)
 		{
-			printf("bonus!!");
+			//printf("bonus!!");
 			data->score += 50;
 		}
 		//data->left = 0;

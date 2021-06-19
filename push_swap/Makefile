@@ -33,9 +33,6 @@ clean :
 	rm -rf $(OBJECTS)
 
 fclean : clean
-	rm -rf $(SILHANG)
+	rm -rf $(SILHANG) $(NAME)
 
 re : fclean all
-
-bonus : $(OBJECTS) $(OBJECTS_B)
-	ar rcs $(NAME) $(OBJECTS) $(OBJECTS_B)

@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:00:17 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:00:29 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:32:40 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_sort(t_arr arr)
 	int		i;
 
 	i = 0;
-	while (i < arr.top - 1)
+	while (i < arr.top)
 	{
 		if (arr.arr[i] < arr.arr[i + 1])
 		{

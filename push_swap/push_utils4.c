@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:59:48 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:10:55 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:38:46 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	sort_arr(t_data *data)
 void	amugeona(t_data *data, int *count, int *i, int point)
 {
 	pb(&(data->arr), &(data->brr), count);
-	i++;
+	(*i)++;
 	if (arrtop(data->arr, 1) > data->cp[(point * 8) - 1])
-	rr(&data->arr, &data->brr, count);
+		rr(&data->arr, &data->brr, count);
 	else
 		rb(&data->brr, count);
 }

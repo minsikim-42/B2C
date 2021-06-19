@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsikim <spalstlr321@naver.com>           +#+  +:+       +#+        */
+/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 12:00:07 by minsikim          #+#    #+#             */
-/*   Updated: 2021/01/14 11:33:59 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:39:06 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	arrange(char **arr, char const *s, char c)
 	}
 }
 
-int	strcount(char const *s, char c, int j)
+int		strcount(char const *s, char c, int j)
 {
 	int		count;
 
@@ -67,7 +67,7 @@ int	strcount(char const *s, char c, int j)
 	return (count);
 }
 
-int	spcount(char const *s, char c)
+int		spcount(char const *s, char c)
 {
 	int		i;
 	int		count;
@@ -94,8 +94,8 @@ int	spcount(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	if (!s)
 		return (0);

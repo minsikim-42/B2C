@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	clear(char **arr, int c)
+void	clear(char **arr, int c)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ static void	clear(char **arr, int c)
 	free(arr);
 }
 
-static void	arrange(char **arr, char const *s, char c)
+void	arrange(char **arr, char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -54,7 +54,7 @@ static void	arrange(char **arr, char const *s, char c)
 	}
 }
 
-static int	strcount(char const *s, char c, int j)
+int	strcount(char const *s, char c, int j)
 {
 	int		count;
 
@@ -67,7 +67,7 @@ static int	strcount(char const *s, char c, int j)
 	return (count);
 }
 
-static int	spcount(char const *s, char c)
+int	spcount(char const *s, char c)
 {
 	int		i;
 	int		count;
@@ -91,11 +91,11 @@ static int	spcount(char const *s, char c)
 	return (count);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	if (!s)
 		return (0);

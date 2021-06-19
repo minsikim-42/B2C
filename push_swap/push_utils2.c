@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_utils2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/19 18:00:56 by minsikim          #+#    #+#             */
+/*   Updated: 2021/06/19 18:01:05 by minsikim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	setzero(t_data *data, int width)
@@ -34,11 +46,7 @@ void	setarr(t_data *data, int sp_count, char **argv)
 			inja = ft_split(argv[i], ' ');
 			j = 1;
 			while (inja[j] != 0)
-			{
-				data->arr.arr[sp_count - k - 1] = ft_atoi(inja[j]);
-				j++;
-				k++;
-			}
+				data->arr.arr[sp_count - k++ - 1] = ft_atoi(inja[j++]);
 		}
 		else
 		{

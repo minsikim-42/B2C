@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/19 18:00:54 by minsikim          #+#    #+#             */
+/*   Updated: 2021/06/19 18:01:06 by minsikim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	error_exit(int i)
@@ -37,7 +49,7 @@ int	ft_atoi(char *arr)
 int	biggest(t_arr arr)
 {
 	long long	big;
-	int		i;
+	int			i;
 
 	if (arr.top == 0)
 		return (arr.arr[0]);
@@ -55,7 +67,7 @@ int	biggest(t_arr arr)
 int	smallest(t_arr arr)
 {
 	long long	small;
-	int		i;
+	int			i;
 
 	if (arr.top == 0)
 		return (arr.arr[0]);

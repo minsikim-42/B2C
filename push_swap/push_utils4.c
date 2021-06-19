@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:59:48 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:01:02 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:10:55 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	push_c2(t_data *data, int *count)
 void	top_biggest_roll2(t_arr arr, int *count, t_data *data)
 {
 	int		i;
-	int	 	j;
+	int		j;
 
 	i = 0;
 	while (arr.arr[i] != biggest(arr))
@@ -80,4 +80,14 @@ void	sort_arr(t_data *data)
 		swap(data->cp, index, i);
 		i++;
 	}
+}
+
+void	amugeona(t_data *data, int *count, int *i, int point)
+{
+	pb(&(data->arr), &(data->brr), count);
+	i++;
+	if (arrtop(data->arr, 1) > data->cp[(point * 8) - 1])
+	rr(&data->arr, &data->brr, count);
+	else
+		rb(&data->brr, count);
 }

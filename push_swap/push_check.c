@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:00:14 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:00:30 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:03:59 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_same(int *cp, t_data data)
 	}
 }
 
-int	check_pushab(t_data *data, int point)
+int		check_pushab(t_data *data, int point)
 {
 	int		i;
 
@@ -41,7 +41,7 @@ int	check_pushab(t_data *data, int point)
 	return (1);
 }
 
-int	check_topbottom(t_arr arr, t_data *data, int point)
+int		check_topbottom(t_arr arr, t_data *data, int point)
 {
 	int		i;
 	int		k;
@@ -70,7 +70,7 @@ int	check_topbottom(t_arr arr, t_data *data, int point)
 		return (2);
 }
 
-int	check_ab(t_data *data, int point)
+int		check_ab(t_data *data, int point)
 {
 	int		i;
 

@@ -6,13 +6,13 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:00:58 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:01:04 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:04:58 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	thereis_sp(char *arr)
+int		thereis_sp(char *arr)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int	thereis_sp(char *arr)
 	return (0);
 }
 
-int	split_count(char **argv)
+int		split_count(char **argv)
 {
 	int		i;
 

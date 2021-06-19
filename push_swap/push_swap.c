@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 17:59:00 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 17:59:04 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:11:34 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,7 @@ void	push_c(t_data *data, int *count, int pointab)
 		if (arrtop(data->arr, 0) <= data->cp[pointab + point * 2 - 1])
 		{
 			if (arrtop(data->arr, 0) <= data->cp[pointab + point - 1])
-			{
-				pb(&(data->arr), &(data->brr), count);
-				i++;
-				if (arrtop(data->arr, 1) > data->cp[(point * 8) - 1])
-					rr(&data->arr, &data->brr, count);
-				else
-					rb(&data->brr, count);
-			}
+				amugeona(data, count, &i, point);
 			else
 			{
 				pb(&(data->arr), &(data->brr), count);
@@ -112,10 +105,10 @@ void	push_return_cba(t_data *data, int *count)
 	}
 }
 
-int	main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	t_data	data;
-	int	count;
+	int		count;
 
 	if (argc == 1)
 		exit(0);

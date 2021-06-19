@@ -6,13 +6,13 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:00:18 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:00:28 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:03:48 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check231(t_arr arr)
+int		check231(t_arr arr)
 {
 	int		top;
 
@@ -23,7 +23,7 @@ int	check231(t_arr arr)
 		return (0);
 }
 
-int	check132(t_arr arr)
+int		check132(t_arr arr)
 {
 	int		top;
 
@@ -34,7 +34,7 @@ int	check132(t_arr arr)
 		return (0);
 }
 
-int	check123(t_arr arr)
+int		check123(t_arr arr)
 {
 	int		top;
 
@@ -45,7 +45,7 @@ int	check123(t_arr arr)
 		return (0);
 }
 
-int	check213(t_arr arr)
+int		check213(t_arr arr)
 {
 	int		top;
 

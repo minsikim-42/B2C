@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:00:54 by minsikim          #+#    #+#             */
-/*   Updated: 2021/06/19 18:01:06 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:04:22 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_exit(int i)
 	exit(i);
 }
 
-int	ft_atoi(char *arr)
+int		ft_atoi(char *arr)
 {
 	int			i;
 	long long	result;
@@ -46,7 +46,7 @@ int	ft_atoi(char *arr)
 	return ((int)result);
 }
 
-int	biggest(t_arr arr)
+int		biggest(t_arr arr)
 {
 	long long	big;
 	int			i;
@@ -64,7 +64,7 @@ int	biggest(t_arr arr)
 	return ((int)big);
 }
 
-int	smallest(t_arr arr)
+int		smallest(t_arr arr)
 {
 	long long	small;
 	int			i;
@@ -82,7 +82,7 @@ int	smallest(t_arr arr)
 	return ((int)small);
 }
 
-int	arrtop(t_arr arr, int i)
+int		arrtop(t_arr arr, int i)
 {
 	return (arr.arr[arr.top - i]);
 }

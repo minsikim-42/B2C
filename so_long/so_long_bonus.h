@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:18:34 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:06:02 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:47:33 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ void	read_map(t_data *data);
 void	set_data_things(t_data *data);
 void	put_image_c(t_data *data, int i, int j);
 
-void	check_ber(char *argv);
+void	check_ber(char *argv);  // mapparsing
 void	check_sa(int fd, char **argv, t_data *data);
 void	check_map_pc(char **map, t_data *data);
-void	check_map_w(char **map, t_data data);
+void	check_map_w(char **map, t_data *data);
 int		mapparsing(int argc, char **argv, t_data *data);
 
 #endif

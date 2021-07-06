@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:11 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:18:19 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:52:45 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	loop_move(t_data *data)
 	if (data->frame == 60)
 		data->frame = 0;
 	data->frame++;
+	read_map(data);
     if (data->frame == 30)
         enemy_move(data, data->enemy);
 	if (data->map[data->exit.x][data->exit.y] == 'P' && data->collect == 0)
@@ -76,17 +77,18 @@ int	main(int argc, char *argv[])
 	set_data(argc, argv, &data, &data.img);
 	data.win = mlx_new_window(data.mlx, \
 		data.width * 64, data.height * 64, "so_long");
-	i = 0;
-	while (i < data.height)
-	{
-		j = 0;
-		while (data.map[i][j] != 0)
-		{
-			put_image(&data, i, j);
-			j++;
-		}
-		i++;
-	}
+	printf("h:%d, w:%d\n", data.height, data.width);
+	// i = 0;
+	// while (i < data.height)
+	// {
+	// 	j = 0;
+	// 	while (data.map[i][j] != 0)
+	// 	{
+	// 		put_image(&data, i, j);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	mlx_hook(data.win, 2, 0, key, &data);
 	mlx_loop_hook(data.mlx, loop_move, &data);
 	mlx_loop(data.mlx);

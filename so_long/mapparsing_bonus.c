@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:13 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:49:16 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:07:19 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,5 @@ int	mapparsing(int argc, char **argv, t_data *data)
 	check_sa(fd, argv, data);
 	check_map_w(data->map, data);
 	check_map_pc(data->map, data);
-    printf("h:%d, w:%d\n", data->height, data->width);
 	return (0);
 }

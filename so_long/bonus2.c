@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:24:34 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:43:01 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:34:23 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	find_player(int x, int y, t_npc enemy)
 {
 	int	i;
 
-	printf("|%d %d|\n", x - enemy.x, y - enemy.y);
 	i = find_dae(enemy, x, y);
 	if (i != 0)
 		return (i);

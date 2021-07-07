@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 16:52:48 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 17:56:30 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:06:44 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_image(t_data *data, int i, int j)
 	}
 }
 
-void    put_image_c(t_data *data, int i, int j)
+void	put_image_c(t_data *data, int i, int j)
 {
 	mlx_put_image_to_window(data->mlx, data->win, \
 		data->img.white, j * 64, i * 64);
@@ -54,7 +54,7 @@ void    put_image_c(t_data *data, int i, int j)
 	}
 }
 
-void    set_data_things(t_data *data)
+void	set_data_things(t_data *data)
 {
 	data->point = 0;
 	data->frame = 0;

@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:11 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:52:45 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:34:06 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,50 @@ void	moving(t_data *data)
 		data->img.player_left, data->y * 64, data->x * 64);
 }
 
-void    enemy_move(t_data *data, t_npc enemy)
+void	enemy_move(t_data *data, t_npc enemy)
 {
-    int     i;
+	int		i;
 
-    i = find_player(data->x, data->y, enemy);
-    if (i == 1)
-    {
-        enemy.x++;
-    }
-    if (i == 2)
-    {
-        enemy.y--;
-    }
-    if (i == 3)
-    {
-        enemy.x--;
-    }
-    if (i == 4)
-    {
-        enemy.y++;
-    }
+	i = find_player(data->x, data->y, enemy);
+	printf("player(%d, %d)\n", data->x, data->y);
+	if (i == 1)
+	{
+		data->enemy.y++;
+	}
+	if (i == 2)
+	{
+		data->enemy.x--;
+	}
+	if (i == 3)
+	{
+		data->enemy.y--;
+	}
+	if (i == 4)
+	{
+		data->enemy.x++;
+	}
+}
+
+void	put_count(t_data *data)
+{
+	int			i;
+	static char	*temp;
+
+	i = 0;
+	while (i < data->width)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, \
+			data->img.black, i * 64, data->height * 64);
+		i++;
+	}
+	if (temp != NULL)
+		free(temp);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.black, \
+		80, data->height * 64);
+	mlx_string_put(data->mlx, data->win, 10, \
+		data->height * 64, 0x0000EEEE, "move : ");
+	mlx_string_put(data->mlx, data->win, 80, \
+		data->height * 64, 0x0000EEEE, (temp = ft_itoa(data->moved)));
 }
 
 int	loop_move(t_data *data)
@@ -57,13 +80,14 @@ int	loop_move(t_data *data)
 		data->frame = 0;
 	data->frame++;
 	read_map(data);
-    if (data->frame == 30)
-        enemy_move(data, data->enemy);
 	if (data->map[data->exit.x][data->exit.y] == 'P' && data->collect == 0)
+		exit(0);
+	if (data->enemy.x == data->x && data->enemy.y == data->y)
 		exit(0);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->img.mzic, data->exit.y * 64, data->exit.x * 64);
 	moving(data);
+	put_count(data);
 	return (0);
 }
 
@@ -71,24 +95,11 @@ int	main(int argc, char *argv[])
 {
 	t_data	data;
 	int		i;
-	int		j;
 
 	data.mlx = mlx_init();
 	set_data(argc, argv, &data, &data.img);
 	data.win = mlx_new_window(data.mlx, \
-		data.width * 64, data.height * 64, "so_long");
-	printf("h:%d, w:%d\n", data.height, data.width);
-	// i = 0;
-	// while (i < data.height)
-	// {
-	// 	j = 0;
-	// 	while (data.map[i][j] != 0)
-	// 	{
-	// 		put_image(&data, i, j);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+		data.width * 64, (data.height + 1) * 64, "so_long_bonus");
 	mlx_hook(data.win, 2, 0, key, &data);
 	mlx_loop_hook(data.mlx, loop_move, &data);
 	mlx_loop(data.mlx);

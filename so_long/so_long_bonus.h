@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:18:34 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:47:33 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:10:03 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_data
 	char		**map;
 }				t_data;
 
-void	put_count(t_data *data); // bouns.c
+void	put_count(t_data *data);
 void	moving(t_data *data);
 void	enemy_move(t_data *data, t_npc enemy);
 int		loop_move(t_data *data);
@@ -83,7 +83,7 @@ void	read_map(t_data *data);
 void	set_data_things(t_data *data);
 void	put_image_c(t_data *data, int i, int j);
 
-void	check_ber(char *argv);  // mapparsing
+void	check_ber(char *argv);
 void	check_sa(int fd, char **argv, t_data *data);
 void	check_map_pc(char **map, t_data *data);
 void	check_map_w(char **map, t_data *data);

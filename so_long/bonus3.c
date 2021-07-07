@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:25:57 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 17:59:17 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:28:14 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,10 @@ void	read_map(t_data *data)
 		}
 		i++;
 	}
+	if (data->frame > 30)
+		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy1, \
+			data->enemy.y * 64, data->enemy.x * 64);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy2, \
+			data->enemy.y * 64, data->enemy.x * 64);
 }

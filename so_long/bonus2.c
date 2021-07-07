@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:24:34 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:37:51 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:18:03 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_itoa(int num)
 		i /= 10;
 		c++;
 	}
-	arr = (char *)malloc(sizeof(char) * c);
+	arr = (char *)malloc(sizeof(char) * c + 1);
 	arr[c] = 0;
 	while (c--)
 	{

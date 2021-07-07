@@ -1,4 +1,3 @@
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SILHANG = so_long
 SILHANG_BONUS = so_long_bonus
@@ -13,28 +12,23 @@ BONUS_FILE = mapparsing_bonus.c \
 			bonus3.c \
 			bonus4.c
 
+# gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -fsanitize=address $(CFLAGS) $(MAIN) $(FILE) -o $(SILHANG) -L. -lgnl -I.
+$(SILHANG) : $(FILE) $(MAIN)
+	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(MAIN) $(FILE) -o $(SILHANG) -L. -lgnl -I.
+
+$(SILHANG_BONUS) : $(BONUS_FILE) $(BONUS_MAIN)
+	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(BONUS_FILE) $(BONUS_MAIN) -o $(SILHANG_BONUS) -L. -lgnl -I.
+
 all : $(SILHANG)
 
-# $(OBJECTS) : $(FILE) $(MAIN)
-# 	$(CC) $(CFLAGS) $(MAIN) $(FILE)
-
-# $(LIB) : $(OBJECTS)
-# 	ar rcs $(LIB) $(OBJECTS)
-# $(LIB)
-$(SILHANG) :
-	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(MAIN) $(FILE) -o so_long -L. -lgnl -I.
-
-$(SILHANG_BONUS) :
-	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(BONUS_FILE) $(BONUS_MAIN) -o so_long -L. -lgnl -I.
-
-bonus : $(SILHANG_BONUS)
+bonus : $(SILHANG_BONUS) $(SILHANG)
 
 clean :
 	rm -rf $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean : clean
-	rm -rf $(SILHANG)
+	rm -rf $(SILHANG) $(SILHANG_BONUS)
 
 re : fclean all
 
-.PHONY : bonus
+.PHONY : all clean fclean bonus

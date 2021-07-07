@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 16:52:48 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:06:44 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:40:52 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ void	set_data_things(t_data *data)
 	data->ex = 0;
 	data->x_move = 0;
 	data->y_move = 0;
+	data->enemy.x = 1;
+	data->enemy.y = 1;
 }

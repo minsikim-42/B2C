@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:11 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:36:54 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:10:43 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,13 @@ void	put_count(t_data *data)
 			data->img.black, i * 64, data->height * 64);
 		i++;
 	}
-	if (temp != NULL)
-		free(temp);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.black, \
 		80, data->height * 64);
 	mlx_string_put(data->mlx, data->win, 10, \
 		data->height * 64, 0x0000EEEE, "move : ");
 	mlx_string_put(data->mlx, data->win, 80, \
 		data->height * 64, 0x0000EEEE, (temp = ft_itoa(data->moved)));
+	free(temp);
 }
 
 int	loop_move(t_data *data)
@@ -93,7 +92,6 @@ int	loop_move(t_data *data)
 int	main(int argc, char *argv[])
 {
 	t_data	data;
-	int		i;
 
 	data.mlx = mlx_init();
 	set_data(argc, argv, &data, &data.img);

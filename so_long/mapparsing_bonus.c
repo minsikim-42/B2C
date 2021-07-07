@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:13 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:07:19 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:21:04 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	check_sa(int fd, char **argv, t_data *data)
 	}
 	data->map = (char **)malloc(sizeof(char *) * i + 1);
 	data->height = i;
-	data->map[data->height] = NULL;
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	while (get_next_line(fd, &(data->map[i])))

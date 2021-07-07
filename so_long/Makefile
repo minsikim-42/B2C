@@ -13,22 +13,21 @@ BONUS_FILE = mapparsing_bonus.c \
 			bonus3.c \
 			bonus4.c
 
-all : $(SILHANG) $(SILHANG_BONUS)
+all : $(SILHANG)
 
-$(OBJECTS) : $(FILE) $(MAIN)
-	$(CC) $(CFLAGS) $(MAIN) $(FILE)
+# $(OBJECTS) : $(FILE) $(MAIN)
+# 	$(CC) $(CFLAGS) $(MAIN) $(FILE)
 
-$(LIB) : $(OBJECTS)
-	ar rcs $(LIB) $(OBJECTS)
-
-$(SILHANG) : $(LIB)
+# $(LIB) : $(OBJECTS)
+# 	ar rcs $(LIB) $(OBJECTS)
+# $(LIB)
+$(SILHANG) :
 	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(MAIN) $(FILE) -o so_long -L. -lgnl -I.
 
-bonus :
+$(SILHANG_BONUS) :
 	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(BONUS_FILE) $(BONUS_MAIN) -o so_long -L. -lgnl -I.
 
-# bonus : $(OBJECTS_BONUS)
-# 	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -o $(BONUS_MAIN) $(OBJECTS_BONUS) $(SILHANG_BONUS) -L. -lgnl -I.
+bonus : $(SILHANG_BONUS)
 
 clean :
 	rm -rf $(OBJECTS) $(OBJECTS_BONUS)

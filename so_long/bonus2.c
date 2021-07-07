@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:24:34 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:34:23 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:37:51 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	set_data(int argc, char **argv, t_data *data, t_imgs *img)
 {
 	set_data_things(data);
 	mapparsing(argc, argv, data);
-	printf("h:%d, w:%d\n", data->height, data->width);
 	img->player_left = mlx_xpm_file_to_image(data->mlx, \
 		"./textures/face_left.XPM", &data->img_width, &data->img_height);
 	img->coffee = mlx_xpm_file_to_image(data->mlx, \

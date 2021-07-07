@@ -6,7 +6,7 @@
 /*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:11 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:34:06 by minsikim         ###   ########.fr       */
+/*   Updated: 2021/07/07 09:36:54 by minsikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	enemy_move(t_data *data, t_npc enemy)
 	int		i;
 
 	i = find_player(data->x, data->y, enemy);
-	printf("player(%d, %d)\n", data->x, data->y);
 	if (i == 1)
 	{
 		data->enemy.y++;

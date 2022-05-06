@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bonus3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minsikkim <minsikkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:25:57 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 09:28:14 by minsikim         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:18:06 by minsikkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int	key(int keycode, t_data *data)
+int key(int keycode, t_data *data)
 {
 	if (keycode == 53)
 		exit(0);
@@ -28,13 +28,13 @@ int	key(int keycode, t_data *data)
 	return (keycode);
 }
 
-void	moving_x(t_data *data)
+void moving_x(t_data *data)
 {
 	data->map[data->x][data->y] = '0';
 	if (data->map[data->x][data->y - data->x_move] == '1')
 	{
 		data->x_move = 0;
-		return ;
+		return;
 	}
 	if (data->map[data->x][data->y - data->x_move] == 'C')
 	{
@@ -46,13 +46,13 @@ void	moving_x(t_data *data)
 	data->x_move = 0;
 }
 
-void	moving_y(t_data *data)
+void moving_y(t_data *data)
 {
 	data->map[data->x][data->y] = '0';
 	if (data->map[data->x - data->y_move][data->y] == '1')
 	{
 		data->y_move = 0;
-		return ;
+		return;
 	}
 	if (data->map[data->x - data->y_move][data->y] == 'C')
 	{
@@ -64,7 +64,7 @@ void	moving_y(t_data *data)
 	data->y_move = 0;
 }
 
-void	error_exit(int i, char e)
+void error_exit(int i, char e)
 {
 	if (e == 'w')
 		perror("well error\n");
@@ -73,10 +73,10 @@ void	error_exit(int i, char e)
 	exit(i);
 }
 
-void	read_map(t_data *data)
+void read_map(t_data *data)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	if (data->frame == 1)
 		enemy_move(data, data->enemy);
@@ -93,10 +93,10 @@ void	read_map(t_data *data)
 		}
 		i++;
 	}
-	if (data->frame > 30)
-		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy1, \
-			data->enemy.y * 64, data->enemy.x * 64);
+	if (data->frame > FRAME / 2)
+		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy1,
+								data->enemy.y * 64, data->enemy.x * 64);
 	else
-		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy2, \
-			data->enemy.y * 64, data->enemy.x * 64);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.enemy2,
+								data->enemy.y * 64, data->enemy.x * 64);
 }

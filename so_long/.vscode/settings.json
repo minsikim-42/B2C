@@ -2,6 +2,8 @@
     "files.associations": {
         "so_long.h": "c",
         "mlx.h": "c",
-        "so_long_bonus.h": "c"
+        "so_long_bonus.h": "c",
+        "get_next_line.h": "c",
+        "fcntl.h": "c"
     }
 }

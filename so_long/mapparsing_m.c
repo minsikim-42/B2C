@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mapparsing_m.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minsikkim <minsikkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 09:59:13 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/07 12:16:35 by minsikim         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:11:53 by minsikkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_sa(int fd, char **argv, t_data *data)
+void check_sa(int fd, char **argv, t_data *data)
 {
-	int		i;
-	char	*line;
-	int		width;
+	int i;
+	char *line;
+	int width;
 
 	line = 0;
 	get_next_line(fd, &line);
@@ -40,11 +40,11 @@ void	check_sa(int fd, char **argv, t_data *data)
 		i++;
 }
 
-void	check_map_pc(char **map, t_data *data)
+void check_map_pc(char **map, t_data *data)
 {
-	int		i;
-	int		j;
-	int		p;
+	int i;
+	int j;
+	int p;
 
 	i = 0;
 	j = 0;
@@ -68,10 +68,10 @@ void	check_map_pc(char **map, t_data *data)
 		error_exit(0, 's');
 }
 
-void	check_map_a(char **map, t_data *data)
+void check_map_a(char **map, t_data *data)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -81,7 +81,7 @@ void	check_map_a(char **map, t_data *data)
 		while (j < data->width)
 		{
 			if (!(map[i][j] == 'P' || map[i][j] == 'E' ||
-				map[i][j] == 'C' || map[i][j] == '0' || map[i][j] == '1'))
+				  map[i][j] == 'C' || map[i][j] == '0' || map[i][j] == '1'))
 				error_exit(0, 's');
 			j++;
 		}
@@ -89,10 +89,10 @@ void	check_map_a(char **map, t_data *data)
 	}
 }
 
-void	check_map_w(char **map, t_data data)
+void check_map_w(char **map, t_data data)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -115,9 +115,9 @@ void	check_map_w(char **map, t_data data)
 	}
 }
 
-int	mapparsing(int argc, char **argv, t_data *data)
+int mapparsing(int argc, char **argv, t_data *data)
 {
-	int		fd;
+	int fd;
 
 	if (argc != 2)
 		error_exit(0, 'i');

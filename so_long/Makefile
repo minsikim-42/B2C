@@ -14,10 +14,10 @@ BONUS_FILE = mapparsing_bonus.c \
 
 # gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -fsanitize=address $(CFLAGS) $(MAIN) $(FILE) -o $(SILHANG) -L. -lgnl -I.
 $(SILHANG) : $(FILE) $(MAIN)
-	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(MAIN) $(FILE) -o $(SILHANG) -L. -lgnl -I.
+	gcc -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -g3 $(CFLAGS) $(MAIN) $(FILE) -o $(SILHANG) -L./get_next_line -lgnl -L./libft -lft -I.
 
 $(SILHANG_BONUS) : $(BONUS_FILE) $(BONUS_MAIN)
-	gcc -g3 -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(BONUS_FILE) $(BONUS_MAIN) -o $(SILHANG_BONUS) -L. -lgnl -I.
+	gcc -L./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -g3 $(CFLAGS) $(BONUS_FILE) $(BONUS_MAIN) -o $(SILHANG_BONUS) -L./get_next_line -lgnl -L./libft -lft -I.
 
 all : $(SILHANG)
 

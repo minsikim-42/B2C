@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long2.c                                         :+:      :+:    :+:   */
+/*   so_long2_m.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minsikim <minsikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minsikkim <minsikkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:35:54 by minsikim          #+#    #+#             */
-/*   Updated: 2021/07/06 12:58:02 by minsikim         ###   ########.fr       */
+/*   Updated: 2022/05/06 16:55:47 by minsikkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key(int keycode, t_data *data)
+int key(int keycode, t_data *data)
 {
 	if (keycode == 53)
 		exit(0);
@@ -28,15 +28,15 @@ int	key(int keycode, t_data *data)
 	return (keycode);
 }
 
-void	write_num(int num)
+void write_num(int num)
 {
-	int		result;
-	char	c;
+	int result;
+	char c;
 
 	if (num == 0)
 	{
 		write(1, "0", 1);
-		return ;
+		return;
 	}
 	result = num / 10;
 	if (result != 0)
@@ -45,7 +45,7 @@ void	write_num(int num)
 	write(1, &c, 1);
 }
 
-void	moving_y(t_data *data)
+void moving_y(t_data *data)
 {
 	write(1, "moving: ", 8);
 	write_num(data->moved);
@@ -53,7 +53,7 @@ void	moving_y(t_data *data)
 	if (data->map[data->x - data->y_move][data->y] == '1')
 	{
 		data->y_move = 0;
-		return ;
+		return;
 	}
 	if (data->map[data->x - data->y_move][data->y] == 'C')
 	{
@@ -66,7 +66,7 @@ void	moving_y(t_data *data)
 	data->y_move = 0;
 }
 
-void	moving_x(t_data *data)
+void moving_x(t_data *data)
 {
 	write(1, "moving: ", 8);
 	write_num(data->moved);
@@ -74,7 +74,7 @@ void	moving_x(t_data *data)
 	if (data->map[data->x][data->y - data->x_move] == '1')
 	{
 		data->x_move = 0;
-		return ;
+		return;
 	}
 	if (data->map[data->x][data->y - data->x_move] == 'C')
 	{
@@ -87,17 +87,15 @@ void	moving_x(t_data *data)
 	data->x_move = 0;
 }
 
-char	*ft_itoa(int num)
+char *ft_itoa(int num)
 {
-	int		i;
-	int		mi;
-	char	*arr;
-	int		c;
+	int i;
+	char *arr;
+	int c;
 
 	if (num < 0)
 	{
 		num *= -1;
-		mi = 1;
 	}
 	i = num;
 	c = 0;
